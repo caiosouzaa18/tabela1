@@ -4,22 +4,150 @@
   <meta charset="UTF-8">
   <title>Tabela de Preço com Descontos</title>
   <style>
-    body { font-family: Arial, sans-serif; padding: 20px; max-width: 800px; margin: auto; }
-    table { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
-    th, td { border: 1px solid #ccc; padding: 8px; text-align: center; }
-    th { background-color: #f2f2f2; }
-    input[type="number"] { width: 80px; }
-    .desconto { margin: 10px 0; }
+    :root {
+      --bg-color: #f8f9fa;
+      --text-color: #333;
+      --card-bg: #fff;
+      --primary: #007bff;
+      --primary-hover: #0056b3;
+      --table-header: #e6f0ff;
+    }
+
+    body.dark {
+      --bg-color: #1e1e1e;
+      --text-color: #eee;
+      --card-bg: #2c2c2c;
+      --primary: #4da3ff;
+      --primary-hover: #1a6ed8;
+      --table-header: #2a3b55;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--bg-color);
+      color: var(--text-color);
+      padding: 20px;
+      max-width: 900px;
+      margin: auto;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    h2, h3 {
+      color: var(--primary);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      background: var(--card-bg);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+      transition: background 0.3s ease;
+    }
+
+    th {
+      background-color: var(--table-header);
+    }
+
+    input[type="number"] {
+      width: 80px;
+      padding: 6px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    input[type="number"]:focus {
+      border-color: var(--primary);
+      outline: none;
+    }
+
+    label {
+      font-size: 16px;
+    }
+
+    .desconto, .resultado {
+      background: var(--card-bg);
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+      margin: 15px 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+
+    .subtotal-cell {
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    .subtotal-cell.flash {
+      background-color: #d1ffd1;
+      color: green;
+    }
+
+    button {
+      padding: 10px 16px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+
+    button:hover {
+      background: var(--primary-hover);
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .top-bar label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    @media print {
+      body {
+        background: white;
+        color: black;
+      }
+      button, .top-bar {
+        display: none;
+      }
+      .desconto {
+        border: 1px solid #ccc;
+      }
+    }
   </style>
 </head>
-<body>
+<body class="light">
 
-  <h2>Tabela de Preço</h2>
-
-  <label>
-    <input type="checkbox" id="parceria" checked>
-    Usar valores com parceria
-  </label>
+  <div class="top-bar">
+    <h2>Tabela de Preço</h2>
+    <div>
+      <label>
+        <input type="checkbox" id="parceria" checked>
+        Usar parceria
+      </label>
+      <label>
+        <input type="checkbox" id="toggleModo"> Modo Escuro
+      </label>
+    </div>
+  </div>
 
   <table>
     <thead>
@@ -31,24 +159,25 @@
         <th>Subtotal</th>
       </tr>
     </thead>
-    <tbody id="tabela-corpo">
-      <!-- Preenchido via JavaScript -->
-    </tbody>
+    <tbody id="tabela-corpo"></tbody>
   </table>
 
   <div class="desconto">
     <label>Desconto %:
       <input type="number" id="descontoPercentual" value="0" min="0" max="100" onchange="calcular()">
     </label>
-    &nbsp;&nbsp;
     <label>Desconto R$:
       <input type="number" id="descontoValor" value="0" min="0" onchange="calcular()">
     </label>
   </div>
 
-  <h3>Total Bruto: <span id="totalBruto">R$ 0,00</span></h3>
-  <h3>Desconto Aplicado: <span id="descontoAplicado">R$ 0,00</span></h3>
-  <h3>Total com Desconto: <span id="totalComDesconto">R$ 0,00</span></h3>
+  <div class="resultado">
+    <h3>Total Bruto: <span id="totalBruto">R$ 0,00</span></h3>
+    <h3>Desconto Aplicado: <span id="descontoAplicado">R$ 0,00</span></h3>
+    <h3>Total com Desconto: <span id="totalComDesconto">R$ 0,00</span></h3>
+    <button onclick="limparCampos()">Limpar Tudo</button>
+    <button onclick="window.print()">Imprimir / Salvar PDF</button>
+  </div>
 
   <script>
     const itens = [
@@ -64,6 +193,11 @@
       return valor.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
     }
 
+    function flashElemento(el) {
+      el.classList.add('flash');
+      setTimeout(() => el.classList.remove('flash'), 400);
+    }
+
     function calcular() {
       const usarParceria = document.getElementById("parceria").checked;
       let total = 0;
@@ -73,7 +207,9 @@
         const preco = usarParceria ? item.comParceria : item.semParceria;
         const subtotal = preco * qtd;
         total += subtotal;
-        document.getElementById(`subtotal-${i}`).innerText = formatar(subtotal);
+        const cell = document.getElementById(`subtotal-${i}`);
+        cell.innerText = formatar(subtotal);
+        flashElemento(cell);
       });
 
       const descontoPercentual = parseFloat(document.getElementById("descontoPercentual").value) || 0;
@@ -85,13 +221,22 @@
       let totalFinal = total - descontoAplicado;
       if (totalFinal < 0) totalFinal = 0;
 
-      // Atualiza os campos
       document.getElementById("totalBruto").innerText = formatar(total);
       document.getElementById("descontoAplicado").innerText = formatar(descontoAplicado);
       document.getElementById("totalComDesconto").innerText = formatar(totalFinal);
     }
 
-    // Preencher a tabela
+    function limparCampos() {
+      document.getElementById("descontoPercentual").value = 0;
+      document.getElementById("descontoValor").value = 0;
+      document.getElementById("parceria").checked = true;
+      itens.forEach((_, i) => {
+        document.getElementById(`qtd-${i}`).value = 0;
+      });
+      calcular();
+    }
+
+    // Criação da tabela
     itens.forEach((item, i) => {
       const linha = document.createElement("tr");
       linha.innerHTML = `
@@ -99,15 +244,18 @@
         <td>${formatar(item.comParceria)}</td>
         <td>${formatar(item.semParceria)}</td>
         <td><input type="number" id="qtd-${i}" min="0" value="0" onchange="calcular()"></td>
-        <td id="subtotal-${i}">R$ 0,00</td>
+        <td class="subtotal-cell" id="subtotal-${i}">R$ 0,00</td>
       `;
       tabelaCorpo.appendChild(linha);
     });
 
+    // Alternar modo claro/escuro
+    document.getElementById("toggleModo").addEventListener("change", function () {
+      document.body.classList.toggle("dark", this.checked);
+    });
+
     document.getElementById("parceria").addEventListener("change", calcular);
-    calcular(); // Inicial
-
+    calcular();
   </script>
-
 </body>
 </html>
