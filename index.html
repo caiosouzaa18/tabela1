@@ -1,156 +1,126 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="utf-8">
-  <title>InovaTec ERP - O SOFTWARE COMPLETO PARA SUA EMPRESA!</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>InovaTec ERP</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="shortcut icon" href="favicon.png">
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
     body {
-      background-color: #000;
-      color: #eee;
+      margin: 0;
       font-family: 'Poppins', sans-serif;
+      background-color: #000;
+      color: #fff;
     }
+
     header {
       text-align: center;
-      padding: 40px 20px;
+      padding: 30px 20px;
     }
+
     header img {
-      width: 150px;
-      margin-bottom: 20px;
+      width: 180px;
     }
+
     header h1 {
-      color: #fff;
-      font-size: 2.5em;
+      margin-top: 10px;
+      color: #00e5ff;
+      font-size: 2.5rem;
     }
-    header p {
-      color: #bbb;
-      max-width: 600px;
-      margin: 10px auto 0;
-    }
-    .container {
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 40px;
       max-width: 1200px;
       margin: auto;
-      padding: 40px 20px;
     }
-    .modules {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-    }
-    .module {
+
+    .feature {
       background-color: #111;
       border-radius: 10px;
       padding: 20px;
-      transition: transform 0.3s;
-      border: 1px solid #222;
+      transition: transform 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
     }
-    .module:hover {
+
+    .feature:hover {
       transform: translateY(-5px);
     }
-    .module img {
-      width: 50px;
-      margin-bottom: 15px;
+
+    .feature img {
+      width: 60px;
     }
-    .module h3 {
-      color: #00e6e6;
+
+    .feature h3 {
+      color: #00e5ff;
+      margin-top: 15px;
       margin-bottom: 10px;
-      font-size: 1.4em;
     }
-    .module p {
+
+    .feature p {
       color: #ccc;
-      font-size: 0.95em;
+      font-size: 0.95rem;
     }
-    .cta {
-      text-align: center;
-      background-color: #00cccc;
-      padding: 40px 20px;
-      border-radius: 10px;
-      margin: 50px 0;
-    }
-    .cta h2 {
-      color: #000;
-      font-size: 2em;
-    }
-    .cta p {
-      color: #000;
-      margin: 10px 0 20px;
-    }
-    .cta a {
-      background: #000;
-      color: #00cccc;
-      padding: 12px 25px;
-      text-decoration: none;
-      border-radius: 5px;
-      font-weight: bold;
-    }
+
     footer {
-      background: #111;
-      color: #666;
       text-align: center;
       padding: 20px;
-      font-size: 0.9em;
+      background-color: #111;
+      color: #777;
+      font-size: 0.9rem;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <img src="logo.png" alt="Logo InovaTec ERP">
-    <h1>InovaTec ERP</h1>
-    <p>O sistema ideal para sua empresa crescer com organização, controle e eficiência.</p>
-  </header>
+<header>
+  <img src="logo.png" alt="Logo InovaTec">
+  <h1>InovaTec ERP</h1>
+</header>
 
-  <div class="container">
-    <div class="modules">
-      <div class="module">
-        <img src="icons/cadastro.png" alt="Cadastro de Pessoas">
-        <h3>CADASTRO DE PESSOAS</h3>
-        <p>Gerencie clientes e fornecedores facilmente, com busca automática de dados e cadastro inteligente.</p>
-      </div>
-      <div class="module">
-        <img src="icons/contas-receber.png" alt="Contas a Receber">
-        <h3>CONTAS A RECEBER</h3>
-        <p>Controle suas cobranças, gere boletos e acompanhe recebimentos em tempo real com relatórios completos.</p>
-      </div>
-      <div class="module">
-        <img src="icons/contas-pagar.png" alt="Contas a Pagar">
-        <h3>CONTAS A PAGAR</h3>
-        <p>Monitore pagamentos, vencimentos, quitações e organize seu fluxo de caixa com praticidade.</p>
-      </div>
-      <div class="module">
-        <img src="icons/estoque.png" alt="Controle de Estoque">
-        <h3>CONTROLE DE ESTOQUE</h3>
-        <p>Organize e acompanhe seu estoque, incluindo grades, números de série, fotos e preços diferenciados.</p>
-      </div>
-      <div class="module">
-        <img src="icons/livro-caixa.png" alt="Livro Caixa">
-        <h3>LIVRO CAIXA</h3>
-        <p>Registre entradas e saídas automaticamente, acompanhando o histórico financeiro da empresa.</p>
-      </div>
-      <div class="module">
-        <img src="icons/pdv.png" alt="PDV">
-        <h3>PDV</h3>
-        <p>Emita NFC-e, SAT e MFE, com integração de TEF, controle de gaveta, orçamentos e vendas rápidas.</p>
-      </div>
-    </div>
+<section class="features">
+  <div class="feature">
+    <img src="cadastro.png" alt="Cadastro de Pessoas">
+    <h3>CADASTRO DE PESSOAS</h3>
+    <p>Gerencie clientes e fornecedores facilmente, com busca automática de dados e cadastro inteligente.</p>
   </div>
 
-  <div class="cta">
-    <h2>Pronto para transformar sua gestão?</h2>
-    <p>Solicite uma demonstração gratuita agora mesmo com um de nossos consultores.</p>
-    <a href="#contato">Fale com a InovaTec</a>
+  <div class="feature">
+    <img src="contas-receber.png" alt="Contas a Receber">
+    <h3>CONTAS A RECEBER</h3>
+    <p>Controle suas cobranças, gere boletos e acompanhe recebimentos em tempo real com relatórios completos.</p>
   </div>
 
-  <footer>
-    <p>&copy; 2025 InovaTec ERP. Todos os direitos reservados.</p>
-  </footer>
+  <div class="feature">
+    <img src="contas-pagar.png" alt="Contas a Pagar">
+    <h3>CONTAS A PAGAR</h3>
+    <p>Monitore pagamentos, vencimentos, quitações e organize seu fluxo de caixa com praticidade.</p>
+  </div>
+
+  <div class="feature">
+    <img src="estoque.png" alt="Controle de Estoque">
+    <h3>CONTROLE DE ESTOQUE</h3>
+    <p>Organize e acompanhe seu estoque, incluindo grades, números de série, fotos e preços diferenciados.</p>
+  </div>
+
+  <div class="feature">
+    <img src="livro-caixa.png" alt="Livro Caixa">
+    <h3>LIVRO CAIXA</h3>
+    <p>Registre entradas e saídas automaticamente, acompanhando o histórico financeiro da empresa.</p>
+  </div>
+
+  <div class="feature">
+    <img src="pdv.png" alt="PDV">
+    <h3>PDV</h3>
+    <p>Emita NFC-e, SAT e MFE, com integração de TEF, controle de gaveta, orçamentos e vendas rápidas.</p>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 InovaTec ERP - Todos os direitos reservados.
+</footer>
 
 </body>
 </html>
