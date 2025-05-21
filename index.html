@@ -3,76 +3,96 @@
 <head>
   <meta charset="utf-8">
   <title>InovaTec ERP - O SOFTWARE COMPLETO PARA SUA EMPRESA!</title>
-  <meta name="author" content="InovaTec ERP">
-  <meta name="description" content="InovaTec ERP - Soluções em automação comercial, gestão empresarial, PDV, NFe, NFCe e muito mais.">
-  <meta name="keywords" content="InovaTec, ERP, PDV, NFe, NFCe, SAT, Vendas, Gestão Empresarial, Automação Comercial">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <link rel="shortcut icon" href="/static/favicon.png">
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="shortcut icon" href="favicon.png">
   <style>
-    body {
+    * {
       margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #000;
+      color: #eee;
       font-family: 'Poppins', sans-serif;
-      color: #fff;            /* Texto branco para contraste */
-      background-color: #000; /* Fundo preto */
     }
     header {
-      background-color: #000; /* Fundo preto */
-      color: white;
-      padding: 20px;
       text-align: center;
-    }
-    header img {
-      max-width: 200px;
-      display: block;
-      margin: 0 auto 15px auto;
-    }
-    header h1 {
-      font-size: 2.8em;
-      margin: 0;
-    }
-    header p {
-      font-size: 1.2em;
-      max-width: 700px;
-      margin: 10px auto 0 auto;
-      color: #ccc;
-    }
-    section {
-      padding: 60px 20px;
-      text-align: center;
-    }
-    .features {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 30px;
-    }
-    .feature {
-      max-width: 300px;
-      background: #111; /* tom escuro para contraste */
-      border-radius: 8px;
-      padding: 20px;
-      color: #eee;
-    }
-    .cta {
-      background: #0066cc;
-      color: white;
       padding: 40px 20px;
     }
+    header img {
+      width: 150px;
+      margin-bottom: 20px;
+    }
+    header h1 {
+      color: #fff;
+      font-size: 2.5em;
+    }
+    header p {
+      color: #bbb;
+      max-width: 600px;
+      margin: 10px auto 0;
+    }
+    .container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 40px 20px;
+    }
+    .modules {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+    }
+    .module {
+      background-color: #111;
+      border-radius: 10px;
+      padding: 20px;
+      transition: transform 0.3s;
+      border: 1px solid #222;
+    }
+    .module:hover {
+      transform: translateY(-5px);
+    }
+    .module img {
+      width: 50px;
+      margin-bottom: 15px;
+    }
+    .module h3 {
+      color: #00e6e6;
+      margin-bottom: 10px;
+      font-size: 1.4em;
+    }
+    .module p {
+      color: #ccc;
+      font-size: 0.95em;
+    }
+    .cta {
+      text-align: center;
+      background-color: #00cccc;
+      padding: 40px 20px;
+      border-radius: 10px;
+      margin: 50px 0;
+    }
+    .cta h2 {
+      color: #000;
+      font-size: 2em;
+    }
+    .cta p {
+      color: #000;
+      margin: 10px 0 20px;
+    }
     .cta a {
-      display: inline-block;
-      margin-top: 20px;
-      padding: 15px 30px;
-      background: white;
-      color: #0066cc;
-      border-radius: 5px;
+      background: #000;
+      color: #00cccc;
+      padding: 12px 25px;
       text-decoration: none;
+      border-radius: 5px;
       font-weight: bold;
     }
     footer {
       background: #111;
-      color: #ccc;
+      color: #666;
       text-align: center;
       padding: 20px;
       font-size: 0.9em;
@@ -80,42 +100,57 @@
   </style>
 </head>
 <body>
+
   <header>
     <img src="logo.png" alt="Logo InovaTec ERP">
     <h1>InovaTec ERP</h1>
     <p>O sistema ideal para sua empresa crescer com organização, controle e eficiência.</p>
   </header>
 
-  <section>
-    <h2>Funcionalidades que fazem a diferença</h2>
-    <div class="features">
-      <div class="feature">
-        <h3>PDV Integrado</h3>
-        <p>Vendas rápidas, com controle de estoque e emissão de NFC-e e SAT.</p>
+  <div class="container">
+    <div class="modules">
+      <div class="module">
+        <img src="icons/cadastro.png" alt="Cadastro de Pessoas">
+        <h3>CADASTRO DE PESSOAS</h3>
+        <p>Gerencie clientes e fornecedores facilmente, com busca automática de dados e cadastro inteligente.</p>
       </div>
-      <div class="feature">
-        <h3>Gestão de Estoque</h3>
-        <p>Acompanhe entradas, saídas e movimentação em tempo real.</p>
+      <div class="module">
+        <img src="icons/contas-receber.png" alt="Contas a Receber">
+        <h3>CONTAS A RECEBER</h3>
+        <p>Controle suas cobranças, gere boletos e acompanhe recebimentos em tempo real com relatórios completos.</p>
       </div>
-      <div class="feature">
-        <h3>Relatórios Gerenciais</h3>
-        <p>Visualize lucros, vendas e fluxo de caixa com relatórios completos.</p>
+      <div class="module">
+        <img src="icons/contas-pagar.png" alt="Contas a Pagar">
+        <h3>CONTAS A PAGAR</h3>
+        <p>Monitore pagamentos, vencimentos, quitações e organize seu fluxo de caixa com praticidade.</p>
       </div>
-      <div class="feature">
-        <h3>Emissão de NFe</h3>
-        <p>Emita notas fiscais eletrônicas com validade jurídica diretamente pelo sistema.</p>
+      <div class="module">
+        <img src="icons/estoque.png" alt="Controle de Estoque">
+        <h3>CONTROLE DE ESTOQUE</h3>
+        <p>Organize e acompanhe seu estoque, incluindo grades, números de série, fotos e preços diferenciados.</p>
+      </div>
+      <div class="module">
+        <img src="icons/livro-caixa.png" alt="Livro Caixa">
+        <h3>LIVRO CAIXA</h3>
+        <p>Registre entradas e saídas automaticamente, acompanhando o histórico financeiro da empresa.</p>
+      </div>
+      <div class="module">
+        <img src="icons/pdv.png" alt="PDV">
+        <h3>PDV</h3>
+        <p>Emita NFC-e, SAT e MFE, com integração de TEF, controle de gaveta, orçamentos e vendas rápidas.</p>
       </div>
     </div>
-  </section>
+  </div>
 
-  <section class="cta">
+  <div class="cta">
     <h2>Pronto para transformar sua gestão?</h2>
     <p>Solicite uma demonstração gratuita agora mesmo com um de nossos consultores.</p>
-    <a href="https://wa.me/+5575988984415?text=Ol%C3%A1%20Gostaria de mais informações sobre o sistema!">Fale com a InovaTec</a>
-  </section>
+    <a href="#contato">Fale com a InovaTec</a>
+  </div>
 
   <footer>
     <p>&copy; 2025 InovaTec ERP. Todos os direitos reservados.</p>
   </footer>
+
 </body>
 </html>
