@@ -1,197 +1,314 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>InovaTec ERP</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
- <style>
-  body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #000;
-    color: #fff;
-  }
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.11.1/tsparticles.bundle.min.js"></script>
 
-  header {
-    text-align: center;
-    padding: 30px 20px;
-  }
+  <style>
+    * {
+      scroll-behavior: smooth;
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
 
-  header img {
-    width: 180px;
-  }
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #000;
+      color: #fff;
+    }
 
-  header h1 {
-    margin-top: 10px;
-    color: #fff;
-    font-size: 2.5rem;
-  }
+    #particles-js {
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, #000, #111);
+      z-index: -1;
+    }
 
-  .features {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
-    padding: 40px;
-    max-width: 1200px;
-    margin: auto;
-  }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 50px;
+      background-color: #000;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
 
-  .feature {
-    background-color: #111;
-    border-radius: 10px;
-    padding: 20px;
-    transition: transform 0.3s ease;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.5);
-  }
+    header img {
+      width: 150px;
+    }
 
-  .feature:hover {
-    transform: translateY(-5px);
-  }
+    nav {
+      display: flex;
+      gap: 30px;
+    }
 
-  .feature img {
-    width: 60px;
-  }
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
 
-  .feature h3 {
-    color: #fff;
-    margin-top: 15px;
-    margin-bottom: 10px;
-  }
+    nav a:hover {
+      color: #00e5ff;
+    }
 
-  .feature p {
-    color: #ccc;
-    font-size: 0.95rem;
-  }
+    .hero {
+      padding-top: 120px;
+      text-align: center;
+    }
 
-  .cta {
-    text-align: center;
-    margin-top: 40px;
-    padding: 30px;
-    background-color: #111;
-    border-radius: 10px;
-  }
+    .hero h1 {
+      font-size: 3rem;
+      color: #00e5ff;
+    }
 
-  .cta h2 {
-    color: #00e5ff;
-    margin-bottom: 10px;
-  }
+    .hero h2 {
+      color: #ccc;
+      margin-top: 10px;
+      font-weight: 400;
+      font-size: 1.3rem;
+    }
 
-  .cta p {
-    color: #ccc;
-    margin-bottom: 20px;
-  }
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      padding: 100px 40px 50px;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-  .cta a {
-    display: inline-block;
-    background-color: #25D366;
-    color: #fff;
-    padding: 12px 30px;
-    border-radius: 50px;
-    text-decoration: none;
-    font-weight: 600;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-    margin-bottom: 15px;
-  }
+    .feature {
+      background-color: rgba(17, 17, 17, 0.8);
+      backdrop-filter: blur(6px);
+      border: 1px solid rgba(0, 229, 255, 0.3);
+      border-radius: 15px;
+      padding: 20px;
+      box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
 
-  .cta a:hover {
-    background-color: #1ebe5d;
-    transform: scale(1.05);
-  }
+    .feature:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 0 25px rgba(0, 229, 255, 0.8);
+    }
 
-  /* Novo estilo para o botão da central de ajuda */
-  .help-button {
-    background-color: #0078d7;
-    padding: 14px 36px;
-    border-radius: 50px;
-    color: white;
-    font-weight: 600;
-    font-size: 1rem;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease;
-  }
-  .help-button:hover {
-    background-color: #005fa3;
-    transform: scale(1.05);
-  }
+    .feature img {
+      width: 60px;
+    }
 
-  footer {
-    text-align: center;
-    padding: 20px;
-    background-color: #111;
-    color: #777;
-    font-size: 0.9rem;
-  }
-   header h2 {
-  color: #ccc;
-  font-weight: 400;
-  margin-top: 10px;
-  font-size: 1.2rem;
-}
-</style>
+    .feature h3 {
+      color: #fff;
+      margin-top: 15px;
+    }
+
+    .feature p {
+      color: #ccc;
+      font-size: 0.95rem;
+    }
+
+    .cta {
+      text-align: center;
+      margin: 50px auto;
+      padding: 30px;
+      background-color: rgba(17, 17, 17, 0.9);
+      backdrop-filter: blur(5px);
+      border-radius: 10px;
+      max-width: 800px;
+    }
+
+    .cta h2 {
+      color: #00e5ff;
+      margin-bottom: 10px;
+    }
+
+    .cta p {
+      color: #ccc;
+      margin-bottom: 20px;
+    }
+
+    .cta a {
+      display: inline-block;
+      background: linear-gradient(90deg, #00e5ff, #25D366);
+      color: #fff;
+      padding: 12px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.3s ease;
+      box-shadow: 0 0 10px rgba(0, 229, 255, 0.7);
+    }
+
+    .cta a:hover {
+      background: linear-gradient(90deg, #25D366, #00e5ff);
+      transform: scale(1.05);
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.9);
+    }
+
+    .about {
+      max-width: 900px;
+      margin: 100px auto;
+      padding: 40px;
+      background-color: rgba(17, 17, 17, 0.9);
+      backdrop-filter: blur(5px);
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.2);
+    }
+
+    .about h2 {
+      color: #00e5ff;
+      margin-bottom: 20px;
+    }
+
+    .about p {
+      color: #ccc;
+      line-height: 1.8;
+      font-size: 1rem;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background-color: #111;
+      color: #777;
+      font-size: 0.9rem;
+    }
+
+  </style>
 </head>
+
 <body>
+
+<div id="particles-js"></div>
 
 <header>
   <img src="logo.png" alt="Logo InovaTec">
-  <h1>InovaTec ERP</h1>
-  <h2>Simplifique sua gestão com tecnologia e inovação</h2>
+  <nav>
+    <a href="#quem-somos">Quem Somos</a>
+    <a href="#recursos">Recursos</a>
+    <a href="https://sites.google.com/view/ajudasitema/sistema" target="_blank">Central de Ajuda</a>
+    <a href="https://wa.me/5575988984415?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20sistema%20InovaTec%20ERP!" target="_blank">Contato</a>
+  </nav>
 </header>
 
-<section class="features">
+<section class="hero">
+  <h1>InovaTec ERP</h1>
+  <h2>Simplifique sua gestão com tecnologia e inovação</h2>
+</section>
+
+<section id="recursos" class="features">
   <div class="feature">
-    <img src="cadastro.png" alt="Cadastro de Pessoas">
+    <img src="cadastro.png" alt="Cadastro de Pessoas" />
     <h3>CADASTRO DE PESSOAS</h3>
     <p>Gerencie clientes e fornecedores facilmente, com busca automática de dados e cadastro inteligente.</p>
   </div>
 
   <div class="feature">
-    <img src="contas-receber.png" alt="Contas a Receber">
+    <img src="contas-receber.png" alt="Contas a Receber" />
     <h3>CONTAS A RECEBER</h3>
     <p>Controle suas cobranças, gere boletos e acompanhe recebimentos em tempo real com relatórios completos.</p>
   </div>
 
   <div class="feature">
-    <img src="contas-pagar.png" alt="Contas a Pagar">
+    <img src="contas-pagar.png" alt="Contas a Pagar" />
     <h3>CONTAS A PAGAR</h3>
     <p>Monitore pagamentos, vencimentos, quitações e organize seu fluxo de caixa com praticidade.</p>
   </div>
 
   <div class="feature">
-    <img src="estoque.png" alt="Controle de Estoque">
+    <img src="estoque.png" alt="Controle de Estoque" />
     <h3>CONTROLE DE ESTOQUE</h3>
     <p>Organize e acompanhe seu estoque, incluindo grades, números de série, fotos e preços diferenciados.</p>
   </div>
 
   <div class="feature">
-    <img src="livro-caixa.png" alt="Livro Caixa">
+    <img src="livro-caixa.png" alt="Livro Caixa" />
     <h3>LIVRO CAIXA</h3>
     <p>Registre entradas e saídas automaticamente, acompanhando o histórico financeiro da empresa.</p>
   </div>
 
   <div class="feature">
-    <img src="pdv.png" alt="PDV">
+    <img src="pdv.png" alt="PDV" />
     <h3>PDV</h3>
     <p>Emita NFC-e, SAT e MFE, com integração de TEF, controle de gaveta, orçamentos e vendas rápidas.</p>
   </div>
+</section>
+
+<section id="quem-somos" class="about">
+  <h2>Quem Somos</h2>
+  <p>
+    A <strong>InovaTec ERP</strong> é uma empresa especializada em soluções para gestão empresarial.
+    Nosso objetivo é simplificar a administração de empresas, oferecendo um sistema completo, moderno e eficiente.
+    Com tecnologia de ponta, auxiliamos nossos clientes na organização financeira, controle de estoque,
+    emissão de documentos fiscais e muito mais. Estamos comprometidos com a inovação e o sucesso dos nossos parceiros.
+  </p>
 </section>
 
 <section class="cta">
   <h2>Pronto para transformar sua gestão?</h2>
   <p>Fale com um consultor agora mesmo e solicite sua demonstração gratuita.</p>
   <a href="https://wa.me/5575988984415?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20sistema%20InovaTec%20ERP!" target="_blank">💬 Fale Conosco no WhatsApp</a>
-  
-  <!-- Botão da Central de Ajuda -->
-  <br>
-  <button class="help-button" onclick="window.open('https://sites.google.com/view/ajudasitema/sistema?authuser=0', '_blank')">
-    Central de Ajuda do Sistema Passo a Passo
-  </button>
 </section>
 
 <footer>
   &copy; 2025 InovaTec ERP - Todos os direitos reservados.
 </footer>
+
+<script>
+tsParticles.load("particles-js", {
+  background: { color: { value: "#000" } },
+  fpsLimit: 60,
+  interactivity: {
+    events: {
+      onClick: { enable: true, mode: "push" },
+      onHover: { enable: true, mode: "repulse" },
+      resize: true
+    },
+    modes: {
+      push: { quantity: 4 },
+      repulse: { distance: 100, duration: 0.4 }
+    }
+  },
+  particles: {
+    color: { value: "#00e5ff" },
+    links: {
+      color: "#00e5ff",
+      distance: 150,
+      enable: true,
+      opacity: 0.4,
+      width: 1
+    },
+    collisions: { enable: true },
+    move: {
+      direction: "none",
+      enable: true,
+      outModes: { default: "bounce" },
+      random: false,
+      speed: 2,
+      straight: false
+    },
+    number: {
+      density: { enable: true, area: 800 },
+      value: 50
+    },
+    opacity: { value: 0.5 },
+    shape: { type: "circle" },
+    size: { value: { min: 1, max: 5 } }
+  },
+  detectRetina: true
+});
+</script>
 
 </body>
 </html>
